@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "projeto-tweet"
+version = "0.1.0"
+description = "Projeto de integração da API do Twitter utilizando Python e MongoDB, criado com a finalidade de estudos e pratica."
+authors = ["victorpmessias <victor.p.messias@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.70.0"
+pymongo = "^3.12.1"
+tweepy = "^4.4.0"
+uvicorn = "^0.15.0"
+PyQt5 = "^5.15.6"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+flake8 = "^4.0.1"
+black = "^21.11b1"
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
