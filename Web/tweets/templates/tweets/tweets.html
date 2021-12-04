@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block titulo%} Tweets{% endblock%}
+{% block css%}<link href="{% static 'tweets/tweets_style.css'%}" rel="stylesheet"> {% endblock %}
+
+{% block conteudo %} 
+<main class="corpo">
+    
+    <li class="box">
+        <header>
+
+        <a href="/">
+        <h2 class="sub">Trends do Momento</h2>
+    </a>
+</header>
+
+        {% for trend in trends %}
+        <ul class="item-box">
+            <a class="tweet" href="{{trend.url}}">{{count}}{{trend.name}}</a>
+        </ul>
+        {% endfor %} 
+        <a class="btn" id="atualizar" href="{% url 'atualizar'%}">ATUALIZAR TWEETS</a>
+        
+    </li>
+</main>
+    {% endblock %}
+

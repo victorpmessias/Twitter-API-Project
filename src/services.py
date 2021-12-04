@@ -5,6 +5,8 @@ from src.constants import BRAZIL_WDE_ID
 from src.connection import trends_collection
 
 
+
+
 def _get_trends(woe_id: int, api: tweepy.API) -> List[Dict[str, Any]]:
     """
     Get trend topics,
@@ -16,13 +18,16 @@ def _get_trends(woe_id: int, api: tweepy.API) -> List[Dict[str, Any]]:
         List[Dict[str, Any]]: Trends list.
     """
 
-    trends = api.get_place_trends(woe_id)
+    trends = api.get_place_trends(BRAZIL_WDE_ID)
 
     return trends[0]["trends"]
 
 
-def get_trends_from_mongo() -> List[Dict[str, Any]]:
+def get_trends_from_mongo(atualizar=None) -> List[Dict[str, Any]]:
     trends = trends_collection.find({})
+    if atualizar:
+        trends = save_trends()
+        trends = trends_collection.find({})
     return list(trends)
 
 
@@ -32,5 +37,5 @@ def save_trends() -> None:
 
     api = tweepy.API(auth)
 
-    trends = _get_trends(woe_id=BRAZIL_WDE_ID)
+    trends = _get_trends(woe_id=BRAZIL_WDE_ID, api=tweepy.API(auth))
     trends_collection.insert_many(trends)

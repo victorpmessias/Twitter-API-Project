@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet"> 
+    {% block css%}{% endblock %}
+
+    
+       <title>{% block titulo%}MyTweetAPI{% endblock %}</title>
+</head>
+<body>
+    {% block conteudo%} {% endblock%}
+
+
+
+    
+</body>
+</html>
